@@ -16,8 +16,8 @@ on:
     types: [started]
     
 env:
-    #SSH_ACTIONS: false
-    SSH_ACTIONS: true
+    SSH_ACTIONS: false
+    #SSH_ACTIONS: true
     UPLOAD_BIN_DIR: true
     UPLOAD_FIRMWARE: true
     UPLOAD_COWTRANSFER: true
