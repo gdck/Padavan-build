@@ -58,7 +58,7 @@ jobs:
     - name: Compile the Firmware
       id: Compile
       env:
-        TNAME: K2P
+        TNAME: YK-L1
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
@@ -129,7 +129,14 @@ jobs:
     #   name: Padavan-packages
         name: Padavan_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: /opt/images
-        
+
+    - name: Upload bin FIRMWARE
+      uses: actions/upload-artifact@master
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+      with:
+        name: Padavan_FIRMWARE${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: /opt/images   
+                
     - name: Organize files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
@@ -139,12 +146,12 @@ jobs:
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
         
-    - name: Upload bin FIRMWARE
+    - name: Upload firmware directory
       uses: actions/upload-artifact@master
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+      if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: Padavan_FIRMWARE${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: /opt/images   
+        name: Padavan_Firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: ${{ env.FIRMWARE }}
 
 
     - name: Upload firmware to cowtransfer
