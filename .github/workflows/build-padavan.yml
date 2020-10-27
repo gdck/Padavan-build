@@ -55,7 +55,8 @@ jobs:
       uses: gdck/debugger-action@main
       if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
       
-    - name: Build Firmware
+    - name: Compile the Firmware
+      id: Compile
       env:
         TNAME: K2P
       run: |
