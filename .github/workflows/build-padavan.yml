@@ -58,7 +58,7 @@ jobs:
     - name: Compile the Firmware
       id: Compile
       env:
-        TNAME: YK-L1
+        TNAME: NEWIFI3
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
