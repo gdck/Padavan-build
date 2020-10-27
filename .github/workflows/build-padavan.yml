@@ -57,7 +57,7 @@ jobs:
       
     - name: Build Firmware
       env:
-        TNAME: MI-R3G
+        TNAME: K2P
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
