@@ -129,13 +129,13 @@ jobs:
         path: /opt/images
    
 
-    - name : Upload bin
-      uses: actions/upload-artifact@master
-      if: always()
-      with:
+    #- name : Upload bin
+    #  uses: actions/upload-artifact@master
+    #  if: always()
+    #  with:
     #   name: Padavan-packages
-        name: Padavan_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: /opt/images
+    #    name: Padavan_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+    #    path: /opt/images
                 
     - name: Organize files
       id: organize
